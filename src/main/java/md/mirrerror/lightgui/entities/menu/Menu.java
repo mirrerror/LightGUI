@@ -1,5 +1,6 @@
 package md.mirrerror.lightgui.entities.menu;
 
+import com.google.common.collect.ImmutableMap;
 import md.mirrerror.lightgui.entities.elements.GUIElement;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -16,7 +17,7 @@ public class Menu implements InventoryHolder {
 
     private String title;
     private Inventory inventory;
-    private Map<Integer, GUIElement> elements;
+    private final Map<Integer, GUIElement> elements;
 
     public Menu(String title, int slots) {
         this.title = title;
@@ -32,6 +33,10 @@ public class Menu implements InventoryHolder {
     public void removeElement(int slot) {
         inventory.setItem(slot, new ItemStack(Material.AIR));
         elements.remove(slot);
+    }
+
+    public GUIElement getElementAt(int slot) {
+        return elements.get(slot);
     }
 
     public void openFor(Player player) {
@@ -67,11 +72,7 @@ public class Menu implements InventoryHolder {
     }
 
     public Map<Integer, GUIElement> getElements() {
-        return elements;
-    }
-
-    public void setElements(Map<Integer, GUIElement> elements) {
-        this.elements = elements;
+        return ImmutableMap.copyOf(elements);
     }
 
     @Override

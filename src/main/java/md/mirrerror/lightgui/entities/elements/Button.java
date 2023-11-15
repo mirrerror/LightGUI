@@ -3,6 +3,8 @@ package md.mirrerror.lightgui.entities.elements;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class Button extends GUIElement implements Clickable {
+    private boolean isLocked;
+
     public Button(ItemStack itemStack) {
         super(itemStack);
     }
@@ -11,8 +13,12 @@ public abstract class Button extends GUIElement implements Clickable {
     public abstract void onClick();
 
     @Override
-    public abstract boolean isLocked();
+    public boolean isLocked() {
+        return isLocked;
+    }
 
     @Override
-    public abstract void setLocked(boolean isLocked);
+    public void setLocked(boolean isLocked) {
+        this.isLocked = isLocked;
+    }
 }

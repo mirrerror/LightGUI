@@ -2,10 +2,11 @@ package md.mirrerror.lightgui.entities.menu;
 
 import org.bukkit.entity.Player;
 
+import java.util.Collections;
 import java.util.List;
 
 public class PaginatedMenu extends Menu {
-    private List<MenuPage> pages;
+    private final List<MenuPage> pages;
 
     public PaginatedMenu(String title, int slots, List<MenuPage> pages) {
         super(title, slots);
@@ -25,11 +26,15 @@ public class PaginatedMenu extends Menu {
         menuPage.getElements().forEach((slot, element) -> getInventory().setItem(slot, element.getItemStack()));
     }
 
-    public List<MenuPage> getPages() {
-        return pages;
+    public void addPage(MenuPage menuPage) {
+        pages.add(menuPage);
     }
 
-    public void setPages(List<MenuPage> pages) {
-        this.pages = pages;
+    public void removePage(int page) {
+        pages.remove(page);
+    }
+
+    public List<MenuPage> getPages() {
+        return Collections.unmodifiableList(pages);
     }
 }

@@ -2,12 +2,13 @@ package md.mirrerror.lightgui;
 
 import md.mirrerror.lightgui.entities.menu.Menu;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 public class MenuRegistry {
 
-    private Set<Menu> menus;
+    private final Set<Menu> menus;
 
     public MenuRegistry() {
         menus = new HashSet<>();
@@ -22,10 +23,6 @@ public class MenuRegistry {
     }
 
     public Set<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(Set<Menu> menus) {
-        this.menus = menus;
+        return Collections.unmodifiableSet(menus);
     }
 }

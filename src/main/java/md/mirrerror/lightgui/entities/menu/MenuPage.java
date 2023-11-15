@@ -1,5 +1,6 @@
 package md.mirrerror.lightgui.entities.menu;
 
+import com.google.common.collect.ImmutableMap;
 import md.mirrerror.lightgui.entities.elements.GUIElement;
 import org.bukkit.inventory.ItemStack;
 
@@ -7,8 +8,8 @@ import java.util.Map;
 
 public class MenuPage {
     private int slots;
-    private Map<Integer, ItemStack> items;
-    private Map<Integer, GUIElement> elements;
+    private final Map<Integer, ItemStack> items;
+    private final Map<Integer, GUIElement> elements;
 
     public MenuPage(int slots, Map<Integer, ItemStack> items, Map<Integer, GUIElement> elements) {
         this.slots = slots;
@@ -17,6 +18,7 @@ public class MenuPage {
     }
 
     public void setItem(int slot, ItemStack itemStack) {
+        elements.remove(slot);
         items.put(slot, itemStack);
     }
 
@@ -26,11 +28,7 @@ public class MenuPage {
     }
 
     public Map<Integer, ItemStack> getItems() {
-        return items;
-    }
-
-    public void setItems(Map<Integer, ItemStack> items) {
-        this.items = items;
+        return ImmutableMap.copyOf(items);
     }
 
     public int getSlots() {
@@ -42,10 +40,6 @@ public class MenuPage {
     }
 
     public Map<Integer, GUIElement> getElements() {
-        return elements;
-    }
-
-    public void setElements(Map<Integer, GUIElement> elements) {
-        this.elements = elements;
+        return ImmutableMap.copyOf(elements);
     }
 }

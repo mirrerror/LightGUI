@@ -1,6 +1,7 @@
 package md.mirrerror.lightgui.events;
 
 import md.mirrerror.lightgui.entities.elements.Clickable;
+import md.mirrerror.lightgui.entities.elements.GUIElement;
 import md.mirrerror.lightgui.entities.menu.Menu;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
@@ -18,12 +19,14 @@ public class MenuListener implements Listener {
             event.setCancelled(true);
 
             Menu menu = (Menu) inventory.getHolder();
-            menu.getElements().values().forEach(element -> {
-                if(element instanceof Clickable) {
-                    Clickable clickable = (Clickable) element;
-                    if(!clickable.isLocked()) clickable.onClick();
-                }
-            });
+            GUIElement element = menu.getElementAt(event.getRawSlot());
+
+            if(element == null) return;
+
+            if(element instanceof Clickable) {
+                Clickable clickable = (Clickable) element;
+                if(!clickable.isLocked()) clickable.onClick();
+            }
         }
     }
 
