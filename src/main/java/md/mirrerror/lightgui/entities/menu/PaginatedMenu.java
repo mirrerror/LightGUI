@@ -30,6 +30,10 @@ public class PaginatedMenu extends Menu {
         pages.add(menuPage);
     }
 
+    public void setPage(int pageNumber, MenuPage menuPage) {
+        pages.set(pageNumber, menuPage);
+    }
+
     public void removePage(int page) {
         pages.remove(page);
     }
