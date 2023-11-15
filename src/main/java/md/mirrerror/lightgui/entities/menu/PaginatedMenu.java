@@ -2,6 +2,7 @@ package md.mirrerror.lightgui.entities.menu;
 
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,6 +13,11 @@ public class PaginatedMenu extends Menu {
         super(title, slots);
         this.pages = pages;
         if(!pages.isEmpty()) displayPage(0);
+    }
+
+    public PaginatedMenu(String title, int slots) {
+        super(title, slots);
+        this.pages = new ArrayList<>();
     }
 
     public void openFor(Player player, int page) {
