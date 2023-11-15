@@ -1,0 +1,5 @@
+name: LightGUI
+version: '1.0'
+main: md.mirrerror.lightgui.LightGUI
+api-version: '1.18'
+author: 'mirrerror'

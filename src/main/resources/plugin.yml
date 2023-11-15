@@ -1,0 +1,5 @@
+name: LightGUI
+version: '${project.version}'
+main: md.mirrerror.lightgui.LightGUI
+api-version: '1.18'
+author: 'mirrerror'
